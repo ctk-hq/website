@@ -1,41 +1,16 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import Modal from "../utils/Modal";
+
+const imageLoader = ({ src, width, quality }) => {
+  return `https://ctk-public.s3.amazonaws.com/${src}`
+}
 
 const HeroHome = () => {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
   return (
     <section className="relative">
-      {/* Illustration behind hero content */}
-      <div
-        className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none"
-        aria-hidden="true"
-      >
-        <svg
-          width="1360"
-          height="578"
-          viewBox="0 0 1360 578"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <linearGradient
-              x1="50%"
-              y1="0%"
-              x2="50%"
-              y2="100%"
-              id="illustration-01"
-            >
-              <stop stopColor="#FFF" offset="0%" />
-              <stop stopColor="#EAEAEA" offset="77.402%" />
-              <stop stopColor="#DFDFDF" offset="100%" />
-            </linearGradient>
-          </defs>
-          <g fill="url(#illustration-01)" fillRule="evenodd">
-            <circle cx="1232" cy="128" r="128" />
-            <circle cx="155" cy="443" r="64" />
-          </g>
-        </svg>
-      </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="pt-32 pb-12 md:pt-40 md:pb-20">
@@ -52,7 +27,7 @@ const HeroHome = () => {
             </h1>
             <div className="max-w-3xl mx-auto">
               <p
-                className="text-xl text-gray-600 mb-8"
+                className="text-2xl text-gray-600 dark:text-gray-300 mb-8"
                 data-aos="zoom-y-out"
                 data-aos-delay="150"
               >
@@ -65,13 +40,12 @@ const HeroHome = () => {
                 data-aos-delay="300"
               >
                 <a className="main-action" href="https://app.ctk.dev">
-                  Get started for free
+                  Start Composing
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Hero image */}
           <div>
             <div
               className="relative flex justify-center mb-8"
@@ -79,14 +53,16 @@ const HeroHome = () => {
               data-aos-delay="450"
             >
               <div className="flex flex-col justify-center">
-                <img
-                  className="hero-image mx-auto"
-                  src="https://ctk-public.s3.amazonaws.com/ui.png"
-                  alt="Hero"
+                <Image
+                  className=""
+                  src={"/ui.png"}
+                  alt="CTK UI"
+                  width={1088}
+                  height={577}
                 />
               </div>
               <button
-                className="absolute top-full flex items-center transform -translate-y-1/2 bg-white rounded-full font-medium group p-4 shadow-lg"
+                className="hidden absolute top-full flex items-center transform -translate-y-1/2 bg-white rounded-full font-medium group p-4 shadow-lg"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
